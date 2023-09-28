@@ -1,0 +1,34 @@
+﻿@using Octokit;
+
+<section>
+@if(User != null)
+{
+    <figure>
+        <img src="@User.AvatarUrl" alt="Avatar" />
+        <figcaption>@User.Name</figcaption>
+    </figure>
+    <p> <span>UserName: </span>@User.Login</p>
+    <p> <span>Company: </span>@User.Company</p>
+    <p> Location: @User.Location</p>
+    <p> Email: @User.Email</p>
+    <p> Bio: @User.Bio</p>
+    <p> Followers: @User.Followers</p>
+    <p> Following: @User.Following</p>
+    <p> Public Repositories: @User.PublicRepos</p>
+    <p> Created at: @User.CreatedAt</p>
+    <p> Updated at: @User.UpdatedAt</p>
+    <p> Html Url: <a href="@User.HtmlUrl">@User.HtmlUrl</a></p>
+    <p> Blog: <a href="@User.Blog">@User.Blog</a> </p>
+    <p> Type: @User.Type</p>
+    <p> Site Admin: @User.SiteAdmin</p>
+}
+else
+{
+    <p>Cargando usuario</p>
+}
+</section>
+
+@code {
+    [Parameter]
+    public User? User { get; set; }
+}

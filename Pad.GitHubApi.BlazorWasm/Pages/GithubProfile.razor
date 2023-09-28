@@ -1,0 +1,65 @@
+﻿@using Services;
+@using Octokit;
+@inject IGitHubService service
+@inject NavigationManager navigationManager
+@page "/githubprofile/"
+@page "/githubprofile/{UserName?}"
+
+<h3>Github Profile</h3>
+<Searcher />
+
+<p>@UserName</p>
+    <UserInfo User="User" />
+<div id="profile-container">
+
+    @if (Repositories != null)
+    {
+        <ul>
+            @foreach (var repo in Repositories)
+            {
+                <li>
+                    <RepositoryCard Repository="repo" />
+                </li>
+            }
+        </ul>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string? UserName { get; set; }
+    public string DefaultUserName { get; set; } = "Tincho-dev";
+    public List<Repository>? Repositories { get; set; }
+    public User? User { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if(!await service.UserExists(UserName))
+        {
+            navigationManager.NavigateTo("/githubprofile/" + DefaultUserName);
+        }
+        await SearchUser();
+        await SearchRepos();
+    }
+
+    private async Task SearchUser()
+    {
+        try
+        {
+            User = await service.GetUser(UserName);
+        }
+        catch (NotFoundException)
+        {
+        }
+    }  
+    private async Task SearchRepos()
+    {
+        try
+        {
+            Repositories = await service.GetRepositories(UserName);
+        }
+        catch (NotFoundException)
+        {
+        }
+    }
+}

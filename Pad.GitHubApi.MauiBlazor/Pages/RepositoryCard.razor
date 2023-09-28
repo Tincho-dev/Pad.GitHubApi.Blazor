@@ -1,0 +1,73 @@
+﻿@using Octokit;
+
+<section>
+
+@if (Repository != null)
+{
+    <h3>@Repository.Name</h3>
+    <ul>
+        @foreach(var topic in Repository.Topics)
+        {
+            <li>@topic</li>
+        }
+    </ul>
+
+    foreach (var prop in Repository.GetType().GetProperties().OrderBy(p => p.Name))
+        {
+            if (prop.GetValue(Repository) != null 
+            & !(prop.PropertyType == typeof(bool?))
+            & !(prop.PropertyType == typeof(bool))
+            & !(prop.PropertyType == typeof(Octokit.User))
+            & !(prop.PropertyType == typeof(Octokit.RepositoryPermissions))
+            & !(prop.Name.Contains("Name"))
+            & !(prop.Name.Contains("Topic"))
+            & !(prop.Name.Contains("Id"))
+            )
+            {
+                if(prop.GetValue(Repository).ToString().Contains("http"))
+                {
+                    <span>@prop.Name:</span>
+                    <a href="@prop.GetValue(Repository)" target="_blank"> @prop.GetValue(Repository)</a>
+                }
+                else if(prop.PropertyType == typeof(int))
+                {
+                    if((int) prop.GetValue(Repository) > 0)
+                    {
+                        <p>@prop.Name: @prop.GetValue(Repository)</p>
+                    }
+                }
+                else if(prop.Name.Contains("Size"))
+                {
+                    <p>@prop.Name: @prop.GetValue(Repository) KB</p>
+                }
+                else if(prop.Name.Contains("Size"))
+                {
+                    <p>@prop.Name: @prop.GetValue(Repository) KB</p>
+                }
+                else
+                {
+                    <p>@prop.Name: @prop.GetValue(Repository)</p>
+                }
+            }
+        }
+@*     <h3>@Repository.Name</h3>
+    <p> Description: @Repository.Description</p>
+    <p> Created at: @Repository.CreatedAt</p>
+    <p> Updated at: @Repository.UpdatedAt</p>
+    <p> Language: @Repository.Language</p>
+    <p> Size: @Repository.Size</p>
+    <p> Default Branch: @Repository.DefaultBranch</p>
+    <p> Clone Url: @Repository.CloneUrl</p>
+    <a href="@Repository.HtmlUrl" target="_blank">@Repository.Name</a> *@
+}
+else
+{
+    <p>Repository not found</p>
+}
+</section>
+
+
+@code {
+    [Parameter]
+    public Repository? Repository { get; set; }
+}

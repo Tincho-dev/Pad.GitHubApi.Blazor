@@ -1,0 +1,6 @@
+﻿<input type="text" id="UserName" @bind-value="UserName" placeholder="UserName" />
+<a class="btn-primary btn" href="/GitHubProfile/@UserName">Search</a>
+
+@code {
+    private string? UserName { get; set; }
+}
