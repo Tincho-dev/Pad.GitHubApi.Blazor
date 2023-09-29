@@ -1,6 +1,23 @@
-﻿<input type="text" id="UserName" @bind-value="UserName" placeholder="UserName" />
-<a class="btn-primary btn" href="/GitHubProfile/@UserName">Search</a>
+﻿@inject NavigationManager NavigationManager
+
+<div class="row">
+    <div class="col-md-6">
+        <RadzenTextBox @bind-Value="UserName" Placeholder="UserName" />
+    </div>
+    <div class="col-md-6">
+        <RadzenButton Text="Search" Click="@Search" />
+    </div>
+</div>
 
 @code {
-    private string? UserName { get; set; }
+    private string UserName { get; set; }
+
+    private void Search()
+    {
+        if (!string.IsNullOrEmpty(UserName))
+        {
+            // Realiza la navegación a la página del perfil de GitHub con el nombre de usuario.
+            NavigationManager.NavigateTo($"/GitHubProfile/{UserName}");
+        }
+    }
 }
