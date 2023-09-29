@@ -13,14 +13,14 @@
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
 
         <!-- Display name -->
-        <ApplicationTitle>Pad.GitHubApi.MauiBlazor</ApplicationTitle>
+        <ApplicationTitle>GitHubApi</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.pad.githubapi.mauiblazor</ApplicationId>
+        <ApplicationId>com.pad.githubapi.mauiblazor</ApplicationId>
         <ApplicationIdGuid>9B8D7065-484C-4EBD-A0E9-2D9C79DAE377</ApplicationIdGuid>
 
         <!-- Versions -->
-        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationDisplayVersion>1.1</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
 
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>

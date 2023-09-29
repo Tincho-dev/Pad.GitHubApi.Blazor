@@ -1,8 +1,8 @@
 ﻿/* Estilos generales para dispositivos móviles */
 section {
     width: 100%; /* Utiliza el 100% del ancho disponible */
-    margin: 10px; /* Margen uniforme */
-    padding: 10px; /* Espaciado uniforme */
+    margin: 0; /* Margen uniforme */
+    padding: 0; /* Espaciado uniforme */
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f5f5f5;
@@ -13,31 +13,16 @@ section {
     text-align: center; /* Centrar el texto en dispositivos móviles */
 }
 
-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
 figcaption {
     font-size: 1.5em;
     font-weight: bold;
-
     margin: 10px;
 }
 
 figure{
-    
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-section a {
-    text-decoration: none;
-    color: #000;
-    overflow-wrap: anywhere;
-    font-size: 1.2em; /* Aumenta el tamaño del texto de los enlaces en dispositivos móviles */
 }
 
 @media (min-width: 768px) {
@@ -51,5 +36,4 @@ section a {
         display: block; /* Cambia de flex a bloque para dispositivos de escritorio */
         text-align: left; /* Alinea el contenido a la izquierda en dispositivos de escritorio */
     }
-
 }

@@ -8,6 +8,6 @@ public class GitHubConfiguration
     public GitHubConfiguration()
     {
         Username = Environment.GetEnvironmentVariable("GITHUB_USERNAME") ?? "Tincho-dev";
-        Password = Environment.GetEnvironmentVariable("GITHUB_PASSWORD") ?? "YouApiKey";
+        Password = Environment.GetEnvironmentVariable("GITHUB_PASSWORD") ?? "YourApiKey";
     }
 }

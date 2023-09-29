@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Pad.GitHubApi.BlazorWasm;
+using Radzen;
 using Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
